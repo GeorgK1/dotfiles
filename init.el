@@ -289,6 +289,8 @@
 (use-package clang-format)
 (use-package irony)
 
+(use-package php-mode)
+
 (use-package yasnippet)
 (yas-global-mode 1)
 
@@ -306,6 +308,8 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
+(global-company-mode 1)
+
 (use-package lsp-treemacs
   :after lsp)
 
@@ -315,6 +319,7 @@
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 (use-package flycheck)
+(global-flycheck-mode 1)
 
 (use-package pdf-tools)
 
@@ -323,7 +328,26 @@
 (global-auto-revert-mode 1) ;; enables auto revert
 ;; (add-hook 'after-save-hook 'lsp-format-buffer)
 
+;; Fix tabs
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
 (use-package simple-httpd)
 
 (setq auto-save-timeout 3)
 (setq auto-save-interval 20)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(keychain-enviroment yasnippet which-key use-package typescript-mode simple-httpd python-mode projectile php-mode pdf-tools org-roam org-bullets magit lsp-ui lsp-java ligature ivy-rich irony idris-mode helpful general flycheck evil-collection doom-themes doom-modeline counsel company-box clang-format all-the-icons))
+ '(warning-suppress-types '((comp))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

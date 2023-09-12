@@ -425,7 +425,6 @@ Project management in Emacs
       :config
       :custom
       (python-shell-interpreter "python3"))
-
 #+end_src
 
 *** Typescript
@@ -462,6 +461,11 @@ Project management in Emacs
 (use-package irony)
 #+end_src
 
+*** PHP
+#+begin_src emacs-lisp
+(use-package php-mode)
+#+end_src
+
 ** Yas snippets
 
 #+begin_src emacs-lisp
@@ -487,6 +491,8 @@ Company mode provides better completions.
 
   (use-package company-box
     :hook (company-mode . company-box-mode))
+
+  (global-company-mode 1)
 #+end_src
 
 ** lsp-treemacs
@@ -508,9 +514,11 @@ Company mode provides better completions.
 #+end_src
 
 ** Flycheck
+Syntax checking for emacs
 
 #+begin_src emacs-lisp
-(use-package flycheck)
+  (use-package flycheck)
+  (global-flycheck-mode 1)
 #+end_src
 
 * Document reading
@@ -530,8 +538,13 @@ Company mode provides better completions.
   (global-auto-revert-mode 1) ;; enables auto revert
   ;; (add-hook 'after-save-hook 'lsp-format-buffer)
 
-#+end_src
+  ;; Fix tabs
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (setq indent-line-function 'insert-tab)
 
+  (keymap-global-set "C-/" 'comment-dwim) ;; Set comment toggle to match Jetbrains
+  
 ** Simple-httpd
 
 This allows you to host files as a website which you can open in browser
