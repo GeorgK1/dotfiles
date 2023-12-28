@@ -67,14 +67,11 @@ output * bg /usr/share/backgrounds/default.png fill
 # Read `man 5 sway-input` for more information about this section.
 # or input <identifier>
 
-input "type:keyboard" {
-    xkb_layout us,de
-    xkb_variant ,nodeadkeys
-    xkb_options grp:win_space_toggle
-}
-
 input * {
-    xkb_options caps:ctrl_modifier
+    xkb_layout us,ee    
+    xkb_switch_layout next
+    xkb_variant ,nodeadkeys
+    xkb_options grp:win_space_toggle,caps:ctrl_modifier
 }
 ### Key bindings
 #
